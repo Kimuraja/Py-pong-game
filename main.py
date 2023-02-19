@@ -28,7 +28,7 @@ while is_on:
     s.update()
     b.move()
 
-    #Detect collision with wall
+    # Detect collision with wall
     if b.ycor() > 280 or b.ycor() < -280:
         b.bounce_y()
 
@@ -36,5 +36,10 @@ while is_on:
     if b.distance(p_r) < 50 and b.xcor() > 320 or b.distance(p_l) < 50 and b.xcor() < -320:
         b.bounce_x()
 
+    # Detect if the ball goes out of bounds at the edge of screen
+    if b.xcor() > 380:
+        b.reset_position()
 
+    if b.xcor() < -380:
+        b.reset_position()
 s.exitonclick()
