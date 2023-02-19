@@ -27,11 +27,14 @@ while is_on:
     time.sleep(0.05)
     s.update()
     b.move()
+
+    #Detect collision with wall
     if b.ycor() > 280 or b.ycor() < -280:
-        b.bounce()
+        b.bounce_y()
 
-
-
+    # Detect collision with paddle
+    if b.distance(p_r) < 50 and b.xcor() > 320 or b.distance(p_l) < 50 and b.xcor() < -320:
+        b.bounce_x()
 
 
 s.exitonclick()
