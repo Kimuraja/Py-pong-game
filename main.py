@@ -24,13 +24,14 @@ s.onkey(p_l.go_down, "s")
 
 is_on = True
 while is_on:
-    time.sleep(0.1)
+    time.sleep(0.05)
     s.update()
     b.move()
-    x, y = b.pos()
-    if x > 285:
-        b.bounce(position=+20)
-    elif x < -285:
-        b.bounce(position=-20)
+    if b.ycor() > 280 or b.ycor() < -280:
+        b.bounce()
+
+
+
+
 
 s.exitonclick()
