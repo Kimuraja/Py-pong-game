@@ -25,6 +25,7 @@ s.onkeypress(p_l.go_down, "s")
 
 is_on = True
 while is_on:
+
     # Speed can be changed by multiplying 'move_speed' by 0.9
     time.sleep(b.move_speed)
     s.update()
@@ -46,5 +47,8 @@ while is_on:
         b.reset_game()
         score.r_point()
 
+    if score.r_score == 10 or score.l_score == 10:
+        score.winner()
+        is_on = False
 
 s.exitonclick()
