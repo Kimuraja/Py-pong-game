@@ -6,31 +6,31 @@ import time
 
 s = Screen()
 s.setup(width=800, height=600)
-s.bgcolor('black')
+s.bgcolor('#fffcf2')
 s.title("PONG GAME")
 s.tracer(0)
-
-HEIGHT = s.window_height()
 
 p_r = Paddle((350, 0))
 p_l = Paddle((-350, 0))
 b = Ball()
 score = Scoreboard()
 
-s.listen()
-s.onkey(p_r.go_up, "Up")
-s.onkey(p_r.go_down, "Down")
 
-s.onkey(p_l.go_up, "w")
-s.onkey(p_l.go_down, "s")
+s.listen()
+s.onkeypress(p_r.go_up, "Up")
+s.onkeypress(p_r.go_down, "Down")
+
+s.onkeypress(p_l.go_up, "w")
+s.onkeypress(p_l.go_down, "s")
 
 is_on = True
 while is_on:
+    # Speed can be changed by multiplying 'move_speed' by 0.9
     time.sleep(b.move_speed)
     s.update()
     b.move()
 
-    #Detect collision with wall
+    # Detect collision with wall
     if b.ycor() > 280 or b.ycor() < -280:
         b.bounce_y()
 
@@ -45,5 +45,6 @@ while is_on:
     if b.xcor() < -370:
         b.reset_game()
         score.r_point()
+
 
 s.exitonclick()
